@@ -1,6 +1,6 @@
 # Minimalist Wallpaper
 
-A collection of clean, modern, and minimalist wallpapers for your screens.
+collection of clean, modern, and minimalist wallpapers for desktop.
 
 ## About
 
