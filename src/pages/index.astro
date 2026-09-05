@@ -1,11 +1,40 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import "../styles/global.css";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const wallpaper = {
+  title: "Minimalist Wallpaper",
+  image: "/wallpaper/wallpaper.jpg",
+};
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{wallpaper.title}</title>
+  </head>
+
+  <body class="min-h-screen bg-white text-black">
+    <main class="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6">
+
+      <img
+        src={wallpaper.image}
+        alt={wallpaper.title}
+        class="w-full rounded-2xl"
+      />
+
+      <h1 class="mt-6 text-2xl font-medium">
+        {wallpaper.title}
+      </h1>
+
+      <a
+        href={wallpaper.image}
+        download
+        class="mt-4 rounded-lg bg-black px-6 py-3 text-sm font-medium text-white"
+      >
+        Download Wallpaper
+      </a>
+
+    </main>
+  </body>
+</html>
