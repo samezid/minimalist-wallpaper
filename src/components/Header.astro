@@ -1,0 +1,477 @@
+<header class="mb-12 flex flex-col items-center">
+
+  <!-- Title -->
+  <h1
+    class="font-mono text-4xl font-medium tracking-tight text-neutral-900 sm:text-5xl"
+  >
+    Minimalist Wallpaper
+  </h1>
+
+
+  <!-- Glass Tabs -->
+  <nav
+    class="mt-7"
+    aria-label="Wallpaper categories"
+  >
+    <div class="glass-tabs">
+
+      <!-- Moving glass surface -->
+      <div
+        class="glass-active"
+        aria-hidden="true"
+      >
+        <div class="glass-active-highlight"></div>
+        <div class="glass-active-edge"></div>
+      </div>
+
+
+      <button
+        type="button"
+        data-category="all"
+        class="glass-tab active"
+      >
+        Semua
+      </button>
+
+      <button
+        type="button"
+        data-category="dark"
+        class="glass-tab"
+      >
+        Mobil-mobilan
+      </button>
+
+      <button
+        type="button"
+        data-category="light"
+        class="glass-tab"
+      >
+        Pecinta-alam
+      </button>
+
+      <button
+        type="button"
+        data-category="abstract"
+        class="glass-tab"
+      >
+        Abstrak
+      </button>
+
+      <button
+        type="button"
+        data-category="nature"
+        class="glass-tab"
+      >
+        Si-paling-geek
+      </button>
+
+      <button
+        type="button"
+        data-category="minimal"
+        class="glass-tab"
+      >
+        Wibu
+      </button>
+
+    </div>
+  </nav>
+
+</header>
+
+
+<style>
+
+  /* ==================================================
+     GLASS TABS
+     ================================================== */
+
+  .glass-tabs {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 2px;
+
+    padding: 5px;
+
+    border-radius: 999px;
+
+    /*
+     * Main glass material
+     */
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.34),
+        rgba(255, 255, 255, 0.16)
+      );
+
+    /*
+     * Glass edge
+     */
+    border: 1px solid rgba(255, 255, 255, 0.42);
+
+    /*
+     * Background blur
+     */
+    backdrop-filter:
+      blur(28px)
+      saturate(180%);
+
+    -webkit-backdrop-filter:
+      blur(28px)
+      saturate(180%);
+
+    /*
+     * Floating depth
+     */
+    box-shadow:
+      0 10px 35px rgba(0, 0, 0, 0.08),
+      inset 0 1px 1px rgba(255, 255, 255, 0.65),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.04);
+
+    overflow: hidden;
+
+    /*
+     * Important:
+     * keeps active glass inside the capsule
+     */
+    isolation: isolate;
+  }
+
+
+  /* ==================================================
+     ACTIVE GLASS
+     ================================================== */
+
+  .glass-active {
+  position: absolute;
+  z-index: 0;
+  top: 5px;
+  left: 5px;
+  width: 0;
+  height: calc(100% - 10px);
+  border-radius: 999px;
+  pointer-events: none;
+
+  background: rgba(0, 0, 0, 0.16);
+
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  box-shadow:
+    0 5px 16px rgba(0, 0, 0, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.12),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.10);
+
+  transition:
+    transform 650ms cubic-bezier(0.16, 1, 0.3, 1),
+    width 650ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  will-change: transform, width;
+}
+
+
+  /* ==================================================
+     SPECULAR HIGHLIGHT
+     ================================================== */
+
+  .glass-active-highlight {
+    position: absolute;
+
+    top: 1px;
+    left: 8%;
+
+    width: 84%;
+    height: 45%;
+
+    border-radius: inherit;
+
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.72),
+        rgba(255, 255, 255, 0)
+      );
+
+    filter: blur(4px);
+
+    opacity: 0.75;
+
+    pointer-events: none;
+  }
+
+
+  /* ==================================================
+     EDGE REFLECTION
+     ================================================== */
+
+  .glass-active-edge {
+    position: absolute;
+
+    inset: 1px;
+
+    border-radius: inherit;
+
+    border: 1px solid rgba(255, 255, 255, 0.28);
+
+    box-shadow:
+      inset 0 0 8px rgba(255, 255, 255, 0.12);
+
+    pointer-events: none;
+  }
+
+
+  /* ==================================================
+     TAB
+     ================================================== */
+
+  .glass-tab {
+    position: relative;
+
+    z-index: 2;
+
+    flex-shrink: 0;
+
+    min-width: 48px;
+
+    padding: 8px 15px;
+
+    border: 0;
+    border-radius: 999px;
+
+    background: transparent;
+
+    color: rgba(0, 0, 0, 0.48);
+
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+      color 250ms ease,
+      transform 180ms ease;
+  }
+
+
+  /* Active text */
+
+  .glass-tab.active {
+    color: rgba(0, 0, 0, 0.92);
+  }
+
+
+  /* Hover */
+
+  .glass-tab:hover {
+    color: rgba(0, 0, 0, 0.78);
+  }
+
+
+  /* Press */
+
+  .glass-tab:active {
+    transform: scale(0.94);
+  }
+
+
+  /* Focus */
+
+  .glass-tab:focus-visible {
+    outline: 2px solid rgba(0, 0, 0, 0.25);
+    outline-offset: 3px;
+  }
+
+
+  /* ==================================================
+     MOBILE
+     ================================================== */
+
+  @media (max-width: 640px) {
+
+    .glass-tabs {
+      max-width: calc(100vw - 32px);
+
+      overflow-x: auto;
+
+      scrollbar-width: none;
+    }
+
+    .glass-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .glass-tab {
+      padding: 8px 13px;
+      font-size: 11px;
+    }
+
+  }
+
+</style>
+
+
+<script>
+
+  const tabs =
+    document.querySelector<HTMLElement>(
+      ".glass-tabs"
+    );
+
+  const activeGlass =
+    document.querySelector<HTMLElement>(
+      ".glass-active"
+    );
+
+  const buttons =
+    document.querySelectorAll<HTMLButtonElement>(
+      ".glass-tab"
+    );
+
+
+  function moveGlass(
+    button: HTMLButtonElement,
+    animate = true
+  ) {
+
+    if (!tabs || !activeGlass) return;
+
+
+    const buttonRect =
+      button.getBoundingClientRect();
+
+    const tabsRect =
+      tabs.getBoundingClientRect();
+
+
+    const x =
+      buttonRect.left -
+      tabsRect.left;
+
+
+    activeGlass.style.width =
+      `${buttonRect.width}px`;
+
+
+    activeGlass.style.transform =
+      `translateX(${x - 5}px)`;
+
+
+    if (!animate) {
+
+      activeGlass.style.transition = "none";
+
+      requestAnimationFrame(() => {
+        activeGlass.style.transition = "";
+      });
+
+    }
+
+  }
+
+
+  /*
+   * Initial active tab
+   */
+
+  const initial =
+    document.querySelector<HTMLButtonElement>(
+      ".glass-tab.active"
+    );
+
+
+  if (initial) {
+
+    requestAnimationFrame(() => {
+      moveGlass(initial, false);
+    });
+
+  }
+
+
+  /*
+   * Click
+   */
+
+  buttons.forEach((button) => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        if (button.classList.contains("active")) {
+          return;
+        }
+
+
+        /*
+         * Active state
+         */
+
+        buttons.forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+
+        /*
+         * Move glass
+         */
+
+        moveGlass(button);
+
+
+        /*
+         * Tell wallpaper gallery
+         */
+
+        window.dispatchEvent(
+          new CustomEvent(
+            "category-change",
+            {
+              detail:
+                button.dataset.category
+            }
+          )
+        );
+
+      }
+    );
+
+  });
+
+
+  /*
+   * Resize
+   */
+
+  window.addEventListener(
+    "resize",
+    () => {
+
+      const active =
+        document.querySelector<HTMLButtonElement>(
+          ".glass-tab.active"
+        );
+
+      if (active) {
+        moveGlass(active, false);
+      }
+
+    }
+  );
+
+</script>

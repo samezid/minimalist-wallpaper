@@ -1,0 +1,109 @@
+---
+import { Image } from "astro:assets";
+import wallpaper from "../../public/wallpaper/wallpaper.jpg";
+
+const title = "Wallpaper";
+const downloadUrl = "../../public/wallpaper/wallpaper.jpg";
+---
+
+<div class="group relative overflow-hidden rounded-2xl bg-neutral-100">
+
+  <!-- Wallpaper -->
+  <Image
+    src={wallpaper}
+    alt={title}
+    class="block h-auto w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.5]"
+  />
+
+  <!-- Liquid Glass Download Button -->
+  <a
+  href={downloadUrl}
+  download
+  aria-label={`Download ${title}`}
+  class="absolute bottom-5 left-1/2 z-20
+         flex h-12 w-12 -translate-x-1/2 translate-y-2
+         items-center justify-center
+         overflow-hidden rounded-full
+         bg-white/15
+         text-white
+         opacity-0
+         shadow-[0_8px_32px_rgba(0,0,0,0.20)]
+         backdrop-blur-2xl backdrop-saturate-200
+         transition-all duration-500
+         ease-[cubic-bezier(.22,1,.36,1)]
+         group-hover:translate-y-0
+         group-hover:w-40
+         group-hover:opacity-100
+         group-hover:border-white/50
+         group-hover:bg-white/20
+         hover:scale-[1.04]
+         hover:bg-white/30
+         hover:shadow-[0_10px_35px_rgba(0,0,0,0.25)]
+         active:scale-[0.98]"
+>
+  <!-- Liquid highlight -->
+  <span
+    class="pointer-events-none absolute inset-0
+           -translate-x-full
+           rounded-full
+           bg-linear-to-r
+           from-transparent
+           via-white/30
+           to-transparent
+           opacity-0
+           blur-md
+           transition-all duration-700
+           group-hover:translate-x-full
+           group-hover:opacity-100"
+  ></span>
+
+  <!-- Inner glass highlight -->
+  <span
+    class="pointer-events-none absolute inset-px
+           rounded-full
+           border border-white/20"
+  ></span>
+
+  <!-- Download icon -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+    class="relative z-10 h-5 w-5 shrink-0
+           transition-transform duration-300
+           ease-out
+           group-hover:-translate-x-1
+           hover:translate-y-0.5"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M12 3v11"
+    />
+
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="m8 11 4 4 4-4"
+    />
+
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M5 21h14"
+    />
+  </svg>
+
+  <!-- Download text -->
+  <span
+    class="relative z-10 ml-2 max-w-24
+           whitespace-nowrap
+           text-sm font-medium tracking-wide"
+  >
+    Download
+  </span>
+</a>
+
+</div>

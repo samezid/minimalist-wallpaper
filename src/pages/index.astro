@@ -1,40 +1,44 @@
 ---
 import "../styles/global.css";
-
-const wallpaper = {
-  title: "Minimalist Wallpaper",
-  image: "/wallpaper/wallpaper.jpg",
-};
+import Header from "../components/Header.astro";
+import WallpaperCard from "../components/wallpaperCard.astro";
 ---
 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>{wallpaper.title}</title>
+    <title>Minimalist Wallpaper</title>
   </head>
-
-  <body class="min-h-screen bg-white text-black">
-    <main class="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6">
-
-      <img
-        src={wallpaper.image}
-        alt={wallpaper.title}
-        class="w-full rounded-2xl"
-      />
-
-      <h1 class="mt-6 text-2xl font-medium">
-        {wallpaper.title}
-      </h1>
-
-      <a
-        href={wallpaper.image}
-        download
-        class="mt-4 rounded-lg bg-black px-6 py-3 text-sm font-medium text-white"
-      >
-        Download Wallpaper
-      </a>
-
+  <body class="bg-olive-100">
+    <main class="mx-auto max-w-7xl px-6 py-12">
+      <Header />
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+        <WallpaperCard />
+      </div>
     </main>
   </body>
 </html>
