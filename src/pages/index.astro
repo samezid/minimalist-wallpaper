@@ -2,6 +2,30 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import WallpaperCard from "../components/wallpaperCard.astro";
+
+const wallpapers = import.meta.glob(
+  "../assets/wallpapers/*/*.{jpg,jpeg,png,webp}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  }
+);
+
+const wallpaperList = Object.entries(wallpapers).map(
+  ([path, image]) => {
+    const parts = path.split("/");
+    const category = parts[parts.length - 2];
+    const filename = parts[parts.length - 1];
+
+    return {
+      image,
+      category,
+      filename,
+    };
+  }
+);
+
 ---
 
 <html lang="en">
@@ -13,32 +37,61 @@ import WallpaperCard from "../components/wallpaperCard.astro";
   <body class="bg-olive-100">
     <main class="mx-auto max-w-7xl px-6 py-12">
       <Header />
-      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-        <WallpaperCard />
-      </div>
+
+      <section
+        id="wallpaper-grid"
+        class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+      >
+        {
+          wallpaperList.map((wallpaper) => (
+            <div
+              data-category={wallpaper.category}
+            >
+              <WallpaperCard
+                image={wallpaper.image}
+                title={wallpaper.filename}
+              />
+            </div>
+          ))
+        }
+      </section>
+
     </main>
+
+<script>
+  const cards = document.querySelectorAll<HTMLElement>(
+    "#wallpaper-grid > [data-category]"
+  );
+
+  window.addEventListener("category-change", (event) => {
+    const category = String(
+      (event as CustomEvent).detail
+    ).toLowerCase();
+
+    console.log("Selected category:", category);
+
+    cards.forEach((card) => {
+      const cardCategory = String(
+        card.dataset.category
+      ).toLowerCase();
+
+      console.log(
+        "Wallpaper:",
+        cardCategory,
+        "Selected:",
+        category
+      );
+
+      if (
+        category === "all" ||
+        cardCategory === category
+      ) {
+        card.style.display = "";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+</script>
   </body>
 </html>
