@@ -1,6 +1,8 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: 'https://samezid.github.io',
-  base: '/minimalist-wallpaper',
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
